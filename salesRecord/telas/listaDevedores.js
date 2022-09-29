@@ -6,6 +6,7 @@ import {
     TextInput,
 } from 'react-native';
 
+import colors from '../componentes/colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import Listagem from '../componentes/listagem';
@@ -92,11 +93,11 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 20,
         alignItems: 'center',
-        backgroundColor: '#7FFFD4'
+        backgroundColor: colors.backgroundContainer
     },
     textTotal: {
         fontSize: 20,
-        color: '#2F4F2F'
+        color: colors.colorText
     },
     campoPesquisaFalse: {
         borderWidth: 2,
@@ -115,8 +116,8 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 15,
         fontSize: 18,
-        backgroundColor: '#fff',
-        borderColor: '#9f9'
+        backgroundColor: colors.backgroundInputTrue,
+        borderColor: colors.borderColorInputTrue,
     },
     estiloLista: {
         marginTop: 10,

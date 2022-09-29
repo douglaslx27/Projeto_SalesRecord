@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Text,
     View,
@@ -9,6 +9,7 @@ import {
     Keyboard,
 } from 'react-native';
 import Model from '../componentes/model'
+import colors from '../componentes/colors';
 
 export default function DadosDivida({ navigation, route }) {
     const item = route.params
@@ -55,15 +56,29 @@ export default function DadosDivida({ navigation, route }) {
         >
             <View style={styles.container}>
                 <View style={styles.subContainer}>
-                    <Text style={styles.title}>
-                        NOME
-                    </Text>
+                    {
+                        item.tCliente == 'Pessoa' ?
+                            <Text style={styles.title}>
+                                NOME
+                            </Text>
+                            :
+                            <Text style={styles.title}>
+                                CNPJ
+                            </Text>
+                    }
                     <Text style={styles.text}>
                         {item.nome}
                     </Text>
-                    <Text style={styles.title}>
-                        APELIDO
-                    </Text>
+                    {
+                        item.tCliente == 'Pessoa' ?
+                            <Text style={styles.title}>
+                                APELIDO
+                            </Text>
+                            :
+                            <Text style={styles.title}>
+                                NOME DA EMPRESA
+                            </Text>
+                    }
                     <Text style={styles.text}>
                         {item.apelido}
                     </Text>
@@ -88,14 +103,16 @@ export default function DadosDivida({ navigation, route }) {
                         <View style={styles.edicaoPagamento}>
                             <TouchableHighlight
                                 style={styles.btn}
+                                activeOpacity={0.4} underlayColor={colors.underlayColorBtn}
                                 onPress={() => setEdicaoPagamento('edicao')}
                             >
                                 <Text style={styles.textBtn}>
-                                    Editar Dívida
+                                    Nova Venda
                                 </Text>
                             </TouchableHighlight>
                             <TouchableHighlight
                                 style={styles.btn}
+                                activeOpacity={0.4} underlayColor={colors.underlayColorBtn}
                                 onPress={() => setEdicaoPagamento('pagamento')}
                             >
                                 <Text style={styles.textBtn}>
@@ -121,6 +138,7 @@ export default function DadosDivida({ navigation, route }) {
                                 />
                                 <TouchableHighlight
                                     style={styles.btn}
+                                    activeOpacity={0.4} underlayColor={colors.underlayColorBtn}
                                     onPress={() => pagar()}
                                 >
                                     <Text style={styles.textBtn}>
@@ -160,6 +178,7 @@ export default function DadosDivida({ navigation, route }) {
                                 />
                                 <TouchableHighlight
                                     style={styles.btn}
+                                    activeOpacity={0.4} underlayColor={colors.underlayColorBtn}
                                     onPress={() => editarDivida()}
                                 >
                                     <Text style={styles.textBtn}>
@@ -178,7 +197,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#7FFFD4'
+        backgroundColor: colors.backgroundContainer
     },
     subContainer: {
         alignItems: 'center',
@@ -186,7 +205,7 @@ const styles = StyleSheet.create({
         paddingRight: 5,
         marginTop: 20,
         width: '80%',
-        backgroundColor: '#00FA9A',
+        backgroundColor: colors.backgroundSubContainer,
         borderWidth: 1,
         borderRadius: 20,
     },
@@ -202,7 +221,7 @@ const styles = StyleSheet.create({
     inputFalse: {
         borderWidth: 1,
         borderRadius: 10,
-        borderColor: '#060',
+        borderColor: colors.borderColorInputFalse,
         marginBottom: 10,
         padding: 5,
         paddingLeft: 10,
@@ -214,35 +233,36 @@ const styles = StyleSheet.create({
     inputTrue: {
         borderWidth: 3,
         borderRadius: 10,
-        borderColor: '#9f9',
+        borderColor: colors.borderColorInputTrue,
         marginBottom: 10,
         width: '40%',
         padding: 5,
         paddingLeft: 10,
         fontSize: 18,
-        backgroundColor: '#fff',
+        backgroundColor: colors.backgroundInputTrue,
         marginTop: 10
     },
     title: {
         fontSize: 25,
-        color: '#2F4F2F',
+        color: colors.colorTitle,
         marginTop: 10
     },
     text: {
         fontSize: 22,
-        color: '#238E23'
+        color: colors.colorText
     },
     btn: {
         padding: 10,
-        backgroundColor: '#00FA9A',
+        backgroundColor: colors.btn,
         borderWidth: 2,
         borderRadius: 20,
+        borderColor: colors.borderColorInputFalse,
         marginLeft: 5,
         alignItems: 'center'
     },
     textBtn: {
         fontSize: 18,
-        color: '#238E23'
+        color: colors.textBtn
     },
     edicaoPagamento: {
         flexDirection: 'row',

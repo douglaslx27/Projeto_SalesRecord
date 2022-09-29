@@ -1,12 +1,10 @@
 import React from 'react';
-import {
-  StyleSheet,
-} from 'react-native';
 
 import Principal from './telas/principal';
 import NovoDevedor from './telas/novoDevedor';
 import ListaDevedores from './telas/listaDevedores';
 import DadosDivida from './telas/dadosDivida';
+import colors from './componentes/colors';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -23,8 +21,9 @@ export default function App() {
           options={{
             title: 'Home',
             headerStyle: {
-              backgroundColor: '#00FA9A',
+              backgroundColor: colors.backgroundSubContainer,
             },
+            headerTintColor: colors.colorTitle,
             headerTitleStyle: {
               fontWeight: 'bold',
               fontSize: 30,
@@ -38,8 +37,9 @@ export default function App() {
           options={{
             title: 'Nova Venda',
             headerStyle: {
-              backgroundColor: '#00FA9A',
+              backgroundColor: colors.backgroundSubContainer,
             },
+            headerTintColor: colors.colorTitle,
             headerTitleStyle: {
               fontWeight: 'bold',
               fontSize: 30,
@@ -53,8 +53,9 @@ export default function App() {
           options={{
             title: 'Lista de Vendas',
             headerStyle: {
-              backgroundColor: '#00FA9A',
+              backgroundColor: colors.backgroundSubContainer,
             },
+            headerTintColor: colors.colorTitle,
             headerTitleStyle: {
               fontWeight: 'bold',
               fontSize: 30,
@@ -68,8 +69,9 @@ export default function App() {
           options={{
             title: 'Dados da Venda',
             headerStyle: {
-              backgroundColor: '#00FA9A',
+              backgroundColor: colors.backgroundSubContainer,
             },
+            headerTintColor: colors.colorTitle,
             headerTitleStyle: {
               fontWeight: 'bold',
               fontSize: 30,

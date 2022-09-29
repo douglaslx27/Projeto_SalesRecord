@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
     View,
     TouchableHighlight,
+    Modal
 } from 'react-native';
 import Model from '../componentes/model';
+import colors from '../componentes/colors';
 
 export default function Principal({ navigation }) {
 
@@ -13,14 +15,15 @@ export default function Principal({ navigation }) {
         let listDividas = await Model.carregarDados();
         if (listDividas[0]) {
             navigation.navigate('Lista de Devedores')
-        } else (alert('AINDA NÃO POSSUI VENDAS CADASTRADAS'))
+        } else (alert('NÃO POSSUI VENDAS CADASTRADAS'))
     }
 
     return (
         <View style={styles.container}>
+
             <TouchableHighlight
                 style={styles.btn}
-                activeOpacity={0.4} underlayColor='#7FFFD4'
+                activeOpacity={0.4} underlayColor={colors.underlayColorBtn}
                 onPress={() => navigation.navigate('Novo Devedor')}
             >
                 <Text style={styles.textBtn}>
@@ -30,7 +33,7 @@ export default function Principal({ navigation }) {
 
             <TouchableHighlight
                 style={styles.btn}
-                activeOpacity={0.4} underlayColor='#7FFFD4'
+                activeOpacity={0.4} underlayColor={colors.underlayColorBtn}
                 onPress={() => ListaDeDevedores()}
             >
                 <Text style={styles.textBtn}>
@@ -46,19 +49,30 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#7FFFD4'
+        backgroundColor: colors.backgroundContainer
+    },
+    containerTipoCliente: {
+        marginTop: '50%',
+        marginLeft: 20,
+        paddingTop: 20,
+        width: '90%',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: colors.backgroundContainer,
+        borderRadius: 20
     },
     btn: {
         padding: 20,
         margin: 10,
-        backgroundColor: '#00FA9A',
+        backgroundColor: colors.btn,
         borderWidth: 2,
         borderRadius: 20,
+        borderColor: colors.borderColorInputFalse,
         width: '50%',
         alignItems: 'center'
     },
     textBtn: {
         fontSize: 20,
-        color: '#000'
+        color: colors.textBtn
     }
 })

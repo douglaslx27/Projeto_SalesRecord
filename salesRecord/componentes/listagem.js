@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Text,
     View,
@@ -6,8 +6,12 @@ import {
     FlatList,
     TouchableHighlight
 } from 'react-native';
+import Model from '../componentes/model'
+
+import colors from './colors';
 
 export default function Listagem(props) {
+
     return (
 
         <FlatList
@@ -17,13 +21,31 @@ export default function Listagem(props) {
             renderItem={({ item }) =>
                 <View style={styles.listagem}>
                     <TouchableHighlight
-                        activeOpacity={0.7} underlayColor='#7FFFD4'
+                        activeOpacity={0.7} underlayColor={colors.underlayColorBtn}
                         onPress={() => props.navigation.navigate('Dados da Dívida', item)}
                     >
                         <View style={styles.card}>
-                            <Text style={styles.titulo}>Nome </Text>
+                            {
+                                item.tCliente == 'Pessoa' ?
+                                    <Text style={styles.titulo}>
+                                        Nome
+                                    </Text>
+                                    :
+                                    <Text style={styles.titulo}>
+                                        CNPJ
+                                    </Text>
+                            }
                             <Text style={styles.text}>{item.nome} </Text>
-                            <Text style={styles.titulo}>Apelido</Text>
+                            {
+                                item.tCliente == 'Pessoa' ?
+                                    <Text style={styles.titulo}>
+                                        Apelido
+                                    </Text>
+                                    :
+                                    <Text style={styles.titulo}>
+                                        Nome da empresa
+                                    </Text>
+                            }
                             <Text style={styles.text}>{item.apelido} </Text>
                             <Text style={styles.titulo}>Valor</Text>
                             <Text style={styles.text}>R$ {item.valor.toFixed(2)}</Text>
@@ -48,7 +70,7 @@ const styles = StyleSheet.create({
         margin: 5,
         padding: 3,
         width: '30%',
-        backgroundColor: '#00FA9A',
+        backgroundColor: colors.backgroundSubContainer,
         borderRadius: 15,
     },
     card: {
@@ -56,10 +78,10 @@ const styles = StyleSheet.create({
     },
     titulo: {
         fontSize: 16,
-        color: '#2F4F2F'
+        color: colors.colorTitle
     },
     text: {
         fontSize: 14,
-        color: '#238E23'
+        color: colors.colorText
     }
 })
